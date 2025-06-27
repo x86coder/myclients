@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<HTML>
+<HEAD>
+	<title>myclients - CRM module</title>
+	{% load static %}
+	<link href="{% static 'bootstrap.min.css' %}" rel="stylesheet">
+</HEAD>
+<BODY>
+<div class="container-fluid">
+	<H1> myCRM <a href="http://localhost:9000/admin" role="button" class="btn btn-primary">Go to admin</a> </H1>
+	<p> The appliciation tries to model a formal database representation as close as possible to a CRM. Clients are served on a task basis.</p>
+	<HR>
+	<div class="card-columns">
+		<div class="card border-dark" style="margin: 0.5em; width: 18rem; display: inline-block;">
+		<div class="card-header">📁 Products</div>
+			<div class="card-body">
+				<ul>
+				{% for r in records %}
+					<li><a href="products/{{r.name}}" title="#"> {{r.name}} </a></li>
+				{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+</BODY>
+</HTML>
