@@ -4,14 +4,14 @@ from django.http import HttpResponse
 
 from django.template import loader
 
-from .models import Product, Client
+from .models import Product, Client, Contact, Task
 
 def index(request):
-
-    records = Product.objects.all()
-    
-    template = loader.get_template("crm/index.html")
-    context = {"records" : records}
-    res = HttpResponse(template.render(context, request))
-    
-    return res
+	contacts = Contact.objects.all()
+	tasks = Task.objects.all()
+	
+	template = loader.get_template("crm/index.html")
+	context = {"records" : contacts, "tasks" : tasks}
+	res = HttpResponse(template.render(context, request))
+	
+	return res
