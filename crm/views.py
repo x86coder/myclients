@@ -15,3 +15,16 @@ def index(request):
 	res = HttpResponse(template.render(context, request))
 	
 	return res
+	
+def TaskDetail(request, task_id):
+	task = Task.objects.get(pk=task_id)
+	
+	template = loader.get_template("crm/taskdetail.html")
+	context = {"task" : task}
+	return HttpResponse(template.render(context, request))
+	
+def TaskAdd(request):
+
+	template = loader.get_template("crm/taskadd.html")
+	context = {"data" : None}
+	return HttpResponse(template.render(context, request))

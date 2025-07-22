@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <HTML>
 <HEAD>
-	<title>myclients - CRM module</title>
+	<title>myCRM - task</title>
 	{% load static %}
 	<link href="{% static 'bootstrap.min.css' %}" rel="stylesheet">
 </HEAD>
@@ -12,10 +12,10 @@
 	
 	<ul class="nav nav-tabs">
 	<li class="nav-item">
-	<a class="nav-link active" aria-current="page" href="http://localhost/crm">Dashboard</a>
+	<a class="nav-link" aria-current="page" href="http://localhost/crm">Dashboard</a>
 	</li>
 	<li class="nav-item">
-	<a class="nav-link" href="/tasks">Tasks</a>
+	<a class="nav-link active" href="/tasks">Tasks</a>
 	</li>
 	<li class="nav-item">
 	<a class="nav-link" href="/clients">Clients</a>
@@ -41,29 +41,21 @@
 	</ul>
 	
 	<br>
-	
-	<div class="card-columns">
-		<div class="card border-dark" style="margin: 0.5em; width: 18rem; display: inline-block;">
-		<div class="card-header">📁 Contacts</div>
+	<div class="card border-dark" style="margin: 0.5em; width: 18rem; display: inline-block;">
+		<div class="card-header">📁 New task</div>
 			<div class="card-body">
-				<ul>
-				{% for r in records %}
-					<li><a href="contacts/{{r.id}}" title="#"> {{r.name}} </a></li>
-				{% endfor %}
-				</ul>
-			</div>
-		</div>
-		<div class="card border-dark" style="margin: 0.5em; width: 18rem; display: inline-block;">
-		<div class="card-header">📁 Tasks</div>
-			<div class="card-body">
-				<ul>
-				{% for t in tasks %}
-					<li><a href="tasks/{{t.id}}" title="#"> {{t.name}} </a></li>
-				{% endfor %}
-				</ul>
+				<form action="/save" method="POST">
+				{% csrf_token %}
+				<fieldset>
+				<label for="name">Name</label>
+				<input type="text" name="name">
+				</fieldset>
+				<input type="submit" value="Save">
+				</form>
 			</div>
 		</div>
 	</div>
+	
 </div>
 </BODY>
 </HTML>
