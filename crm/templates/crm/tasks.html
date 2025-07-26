@@ -42,14 +42,16 @@
 	
 	<br>
 	
-	<form action="/save" method="POST">
-	{% csrf_token %}
-	<fieldset>
-	<label for="name">Name</label>
-	<input type="text" name="name">
-	</fieldset>
-	<input type="submit" value="Save">
-	</form>
+	<ul>
+	
+	{% for t in tasks %}
+	
+		<li> {{ t.name }} </li>
+		
+	{% endfor %}
+	
+		<!-- <li> <a href="add"> Add new </a> </li> -->
+	</ul>
 	
 </div>
 </BODY>

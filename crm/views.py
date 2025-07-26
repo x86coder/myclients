@@ -16,6 +16,14 @@ def index(request):
 	
 	return res
 	
+def Tasks(request):
+
+	tasks = Task.objects.all()
+	
+	template = loader.get_template('crm/tasks.html')
+	context = { "tasks" : tasks }
+	return HttpResponse(template.render(context, request))
+	
 def TaskDetail(request, task_id):
 	task = Task.objects.get(pk=task_id)
 	
@@ -27,4 +35,12 @@ def TaskAdd(request):
 
 	template = loader.get_template("crm/taskadd.html")
 	context = {"data" : None}
+	return HttpResponse(template.render(context, request))
+	
+def Contacts(request):
+
+	contacts = Contact.objects.all()
+	
+	template = loader.get_template('crm/contacts.html')
+	context = { "contacts" : contacts }
 	return HttpResponse(template.render(context, request))
