@@ -42,18 +42,30 @@
 	
 	<br>
 	
-	<table border="1">
+	<form action="/save" method="POST">
+	{% csrf_token %}
+	<fieldset>
 	
-	{% for c in contacts %}
-	
-		<tr> <td>{{ c.id }} </td> <td>{{ c.name }} </td></tr>
+		<label for="client">Client</label>
+		<select name="client">
+			<option value="0"> Select client ... </option>
+		</select>
 		
-	{% endfor %}
-	
+		<label for="name">Name</label>
+		<input type="text" name="name">
 		
-	</table>
-	
-	<span>> <a href="contacts/add"> Add new </a> </span>
+		<label for="position">Position</label>
+		<input type="text" name="position">
+		
+		<label for="phone">Phone</label>
+		<input type="text" name="phone">
+		
+		<label for="notes">Notes</label>
+		<textarea rows="10" cols="50" name="notes"></textarea>
+		
+		<input type="submit" value="Save">
+		</fieldset>
+	</form>
 	
 </div>
 </BODY>

@@ -31,10 +31,16 @@ def TaskDetail(request, task_id):
 	context = {"task" : task}
 	return HttpResponse(template.render(context, request))
 	
-def TaskAdd(request):
+def ContactAdd(request):
 
-	template = loader.get_template("crm/taskadd.html")
-	context = {"data" : None}
+	template = loader.get_template("crm/contactadd.html")
+	context = None
+	return HttpResponse(template.render(context, request))
+	
+def ContactSave(request, payload):
+
+	template = loader.get_template("crm/contactsave.html")
+	context = {"payload" : payload}
 	return HttpResponse(template.render(context, request))
 	
 def Contacts(request):

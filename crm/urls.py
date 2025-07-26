@@ -7,6 +7,6 @@ urlpatterns = [
 	path("", views.index, name="index"),
 	path("tasks", views.Tasks, name="tasks"),
 	path("tasks/<int:task_id>", views.TaskDetail, name="taskdetail"),
-	path("tasks/add", views.TaskAdd, name="taskadd"),
+	path("contacts/add", views.ContactAdd),
 	path("contacts", views.Contacts),
 ]
