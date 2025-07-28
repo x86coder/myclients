@@ -9,4 +9,7 @@ urlpatterns = [
 	path("tasks/<int:task_id>", views.TaskDetail, name="taskdetail"),
 	path("contacts/add", views.ContactAdd),
 	path("contacts", views.Contacts),
+	path("clients", views.Clients),
+	path("products", views.Products),
+	path("billing", views.Billing),
 ]

@@ -1,69 +1,34 @@
-<!DOCTYPE HTML>
-<HTML>
-<HEAD>
-	<title>myclients - CRM module</title>
-	{% load static %}
-	<link href="{% static 'bootstrap.min.css' %}" rel="stylesheet">
-</HEAD>
-<BODY>
-<div class="container-fluid">
-	<H1>myCRM</H1>
-	<p>The appliciation tries to model a formal database representation as close as possible to a CRM. Clients are served on a task basis.</p>
-	
-	<ul class="nav nav-tabs">
-	<li class="nav-item">
-	<a class="nav-link active" aria-current="page" href="http://localhost/crm">Dashboard</a>
-	</li>
-	<li class="nav-item">
-	<a class="nav-link" href="tasks">Tasks</a>
-	</li>
-	<li class="nav-item">
-	<a class="nav-link" href="clients">Clients</a>
-	</li>
-	<li class="nav-item">
-	<a class="nav-link" href="contacts">Contacts</a>
-	</li>
-	<li class="nav-item">
-	<a class="nav-link" href="products">Products</a>
-	</li>
-	<li class="nav-item">
-	<a class="nav-link" href="billing">Billing</a>
-	</li>
-	<li class="nav-item">
-	<a class="nav-link" href="bills">Bills</a>
-	</li>
-	<li class="nav-item">
-	<a class="nav-link" href="activesubscriptions" aria-disabled="true">Active Subscriptions</a>
-	</li>
-	<li class="nav-item">
-	<a class="nav-link" href="/admin" tabindex="-1">admin</a>
-	</li>
-	</ul>
-	
-	<br>
-	
-	<div class="card-columns">
-		<div class="card border-dark" style="margin: 0.5em; width: 18rem; display: inline-block;">
-		<div class="card-header">📁 Contacts</div>
-			<div class="card-body">
-				<ul>
-				{% for r in records %}
-					<li><a href="contacts/{{r.id}}" title="#"> {{r.name}} </a></li>
-				{% endfor %}
-				</ul>
-			</div>
+{% extends 'crm/base.html' %}
+{% block title %}
+<H1>myclients CRM</H1>
+<p>The appliciation tries to model a formal database representation as close as possible to a CRM. Clients are served on a task basis.</p>
+{% endblock %}
+{% block content %}
+<div class="card-columns">
+	<div class="card border-dark" style="margin: 0.5em; display: inline-block;">
+	<div class="card-header">📁 Recent contacts</div>
+		<div class="card-body">
+			<table class="table">
+			<thead><tr><th>Id</th><th>Name</th></tr></thead>
+			{% for r in records %}
+			
+				<tr> <td> <a href="contacts/{{ r.id }}">{{ r.id }}</a></td> <td>{{ r.name }} </td></tr>
+				
+			{% endfor %}
+		</table>
 		</div>
-		<div class="card border-dark" style="margin: 0.5em; width: 18rem; display: inline-block;">
-		<div class="card-header">📁 Tasks</div>
-			<div class="card-body">
-				<ul>
-				{% for t in tasks %}
-					<li><a href="tasks/{{t.id}}" title="#"> {{t.name}} </a></li>
-				{% endfor %}
-				</ul>
-			</div>
+	</div>
+	
+	<div class="card border-dark" style="margin: 0.5em; display: inline-block;">
+	<div class="card-header">📁 Tasks</div>
+		<div class="card-body">
+			<ul>
+			{% for t in tasks %}
+				<li><a href="tasks/{{t.id}}" title="#"> {{t.name}} </a></li>
+			{% endfor %}
+			</ul>
 		</div>
 	</div>
 </div>
-</BODY>
-</HTML>
+
+{% endblock %}

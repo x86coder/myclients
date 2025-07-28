@@ -50,3 +50,28 @@ def Contacts(request):
 	template = loader.get_template('crm/contacts.html')
 	context = { "contacts" : contacts }
 	return HttpResponse(template.render(context, request))
+	
+def Clients(request):
+
+	clients = Client.objects.all()
+	
+	template = loader.get_template('crm/clients.html')
+	context = { "clients" : clients }
+	return HttpResponse(template.render(context, request))
+	
+def Products(request):
+
+	products = Product.objects.all()
+	
+	template = loader.get_template('crm/products.html')
+	context = { "products" : products }
+	return HttpResponse(template.render(context, request))
+	
+	
+def Billing(request):
+
+	records = Billing.objects.all()
+	
+	template = loader.get_template('crm/billing.html')
+	context = { 'records' : records }
+	return HttpResponse(template.render(context, request))

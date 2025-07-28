@@ -1,0 +1,16 @@
+{% extends 'crm/base.html' %}
+{% block content %}
+
+<p> <a href="clients/add">Add new</a> </p>
+
+<table class="table">
+<thead><tr><th>Id</th><th>Name</th><th>Description</th></tr></thead>
+{% for p in products %}
+
+	<tr> <td>{{ p.id }} </td> <td>{{ p.name }} </td><td>{{ p.description }} </td></tr>
+	
+{% endfor %}
+
+</table>
+	
+{% endblock %}

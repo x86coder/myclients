@@ -1,0 +1,16 @@
+{% extends 'crm/base.html' %}
+{% block content %}
+
+<p> <a href="clients/add">Add new</a> </p>
+
+<table class="table">
+<thead><tr><th>Id</th><th>Company</th><th>Date added</th></tr></thead>
+{% for c in clients %}
+
+	<tr> <td>{{ c.id }} </td> <td>{{ c.company }} </td><td>{{ c.date_added }} </td></tr>
+	
+{% endfor %}
+
+</table>
+	
+{% endblock %}
