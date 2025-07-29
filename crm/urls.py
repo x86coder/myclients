@@ -12,4 +12,5 @@ urlpatterns = [
 	path("clients", views.Clients),
 	path("products", views.Products),
 	path("billing", views.Billing),
+	path("bills", views.Bills),
 ]

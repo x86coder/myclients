@@ -4,7 +4,7 @@ from django.http import HttpResponse
 
 from django.template import loader
 
-from .models import Product, Client, Contact, Task
+from .models import Product, Client, Contact, Task, Bill, ActiveSubscription
 
 def index(request):
 	contacts = Contact.objects.all()
@@ -70,8 +70,21 @@ def Products(request):
 	
 def Billing(request):
 
-	records = Billing.objects.all()
-	
+	try:
+		records = Billing.objects.all()
+	except AttributeError as e:
+		records = []
+		
 	template = loader.get_template('crm/billing.html')
 	context = { 'records' : records }
 	return HttpResponse(template.render(context, request))
+	
+	
+def Bills(request):
+
+	records = Bill.objects.all()
+
+	template = loader.get_template('crm/bills.html')
+	context = { 'records' : records }
+	return HttpResponse(template.render(context, request))
+	
